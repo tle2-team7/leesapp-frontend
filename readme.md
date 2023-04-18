@@ -65,6 +65,12 @@ Pull Changes
 git pull
 ```
 
+See branches
+```
+git branch
+git branch -r
+```
+
 New branch from current
 
 ```
