@@ -1,6 +1,6 @@
 # Changelog
 
-BETA:
+FRONTEND BETA:
 
 v0.0.1
 
