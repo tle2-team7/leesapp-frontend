@@ -5,12 +5,14 @@ TLE2 Team 7
 ## Technologies in use
 
 NPM
+vite
 
 React
 React-dom
 
-vite
+Typescript
 
+Tailwind
 
 ## CLI
 
