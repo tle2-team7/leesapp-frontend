@@ -4,11 +4,13 @@ TLE2 Team 7
 
 ## Technologies in use
 
-NPM
+NPM vite
 
 React React-dom
 
-vite
+Typescript
+
+Tailwind
 
 ## CLI
 
@@ -26,18 +28,18 @@ Watch
 
 ## Branches
 
-production/v0.1  
+STABLE BRANCHES: production/v0.1  
 release/v0.1.0  
 dev
 
-feature/name-name  
+UNSTABLE BRANCHES: feature/name-name  
 bugfix/name-name
 
 hotfix/name-name
 
 ### flow
 
-feature/bugfix > dev > release > production
+feature/bugfix > [codereview + test] > dev > [end of sprint] > release > [usertest] > production
 
 hotfix > production/release
 
