@@ -39,12 +39,12 @@ export default function SpeechRecognitionComponent() {
   };
 
   const handleSwitchRecognition = () => {
-    setHasStarted(!hasStarted);
     if (!hasStarted) {
       recognition.start();
     } else {
       recognition.stop();
     }
+    setHasStarted(!hasStarted);
   };
 
   return (
