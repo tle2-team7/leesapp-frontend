@@ -1,6 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* "bg-white text-black text-xs p-4 m-2 rounded-md w-64 ml-auto relative after:block after:absolute after:bottom-0 after:right-0 after:inset-0 after:bg-pink-500 after:w-6 after:h-6 ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem, inventore praesentium corrupti mollitia, dolor officiis deserunt esse perspiciatis officia rerum, reiciendis modi adipisci natus magnam?</p> */
+
+.speechOutput {
+  position: relative;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  width: 16rem;
+  height: 100%;
+  font-size: 0.75rem /* 12px */;
+  line-height: 1rem /* 16px */;
+  margin-left: calc(100% - 18rem);
+}
+
+.speechOutput::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-bottom: 1.9rem solid white;
+
+  bottom: 0rem;
+  right: -1.3rem;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

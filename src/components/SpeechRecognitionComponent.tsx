@@ -17,6 +17,7 @@ export default function SpeechRecognitionComponent() {
     if (event.results[index].isFinal) {
       //place the spoken word in dom
       const transcriptElement = document.createElement("p");
+      transcriptElement.classList.add("speechOutput");
       transcriptElement.innerText = transcript;
       document.querySelector(".speechRecognitionOutput")?.appendChild(transcriptElement);
     }
