@@ -6,6 +6,7 @@ export default function SpeechRecognitionComponent() {
   const [hasStarted, setHasStarted] = useState<boolean>(false);
 
   const recognition: SpeechRecognition = new webkitSpeechRecognition() || new SpeechRecognition();
+  recognition.lang = "nl-NL";
   recognition.interimResults = true;
   recognition.continuous = true;
 
@@ -38,18 +39,19 @@ export default function SpeechRecognitionComponent() {
   };
 
   const handleSwitchRecognition = () => {
+    setHasStarted(!hasStarted);
     if (!hasStarted) {
       recognition.start();
     } else {
       recognition.stop();
     }
-    setHasStarted(!hasStarted);
   };
 
   return (
     <div>
       <button className="bg-white rounded-full w-20 h-20 flex justify-center items-center" onClick={() => handleSwitchRecognition()}>
         <img className="w-10" src={hasStarted ? microphoneOn : microphoneOff} alt="microphone" />
+        {hasStarted}
       </button>
       <div className="speechRecognitionOutput"></div>
     </div>
