@@ -49,11 +49,10 @@ export default function SpeechRecognitionComponent() {
 
   return (
     <div>
-      <button className="bg-white rounded-full w-20 h-20 flex justify-center items-center" onClick={() => handleSwitchRecognition()}>
-        <img className="w-10" src={hasStarted ? microphoneOn : microphoneOff} alt="microphone" />
+      <button className="bg-white rounded-full w-18 h-18 flex justify-center items-center" onClick={() => handleSwitchRecognition()}>
+        <img className="w-8" src={hasStarted ? microphoneOn : microphoneOff} alt="microphone" />
         {hasStarted}
       </button>
-      <div className="speechRecognitionOutput"></div>
     </div>
   );
 }
