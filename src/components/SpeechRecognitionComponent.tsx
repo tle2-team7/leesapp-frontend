@@ -1,4 +1,6 @@
 import { useState } from "react";
+import microphoneOn from "../img/microphoneOn.png";
+import microphoneOff from "../img/microphoneOff.png";
 
 export default function SpeechRecognitionComponent() {
   const [hasStarted, setHasStarted] = useState<boolean>(false);
@@ -46,8 +48,8 @@ export default function SpeechRecognitionComponent() {
 
   return (
     <div>
-      <button onClick={() => handleSwitchRecognition()}>
-        {hasStarted ? "Stop" : "Start"} Speech Recognition {hasStarted}
+      <button className="bg-white rounded-full w-20 h-20 flex justify-center items-center" onClick={() => handleSwitchRecognition()}>
+        <img className="w-10" src={hasStarted ? microphoneOn : microphoneOff} alt="microphone" />
       </button>
       <div className="speechRecognitionOutput"></div>
     </div>
