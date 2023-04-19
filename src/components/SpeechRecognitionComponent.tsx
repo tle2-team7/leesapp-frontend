@@ -19,7 +19,7 @@ export default function SpeechRecognitionComponent() {
       const transcriptElement = document.createElement("p");
       transcriptElement.classList.add("speechOutput");
       transcriptElement.innerText = transcript;
-      document.querySelector(".speechRecognitionOutput")?.appendChild(transcriptElement);
+      document.getElementById("speechRecognitionOutput")?.appendChild(transcriptElement);
     }
   };
 
