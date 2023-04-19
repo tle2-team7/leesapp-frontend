@@ -5,7 +5,9 @@ function App() {
       <header className="p-4 items-center justify-center w-screen bg-sky-500">
         <h1 className="text-2xl">Speech recognition</h1>
       </header>
-      <div id="speechRecognitionOutput" className="w-screen relative"></div>
+      <div id="speechRecognitionOutput" className="w-screen relative">
+        <p className="sentenceToRead">De kat krapt de krullen van de trap</p>
+      </div>
       <footer className="absolute bottom-0 p-4 flex items-center justify-center w-screen bg-sky-600">
         <SpeechRecognitionComponent />
       </footer>
