@@ -8,7 +8,7 @@ export default function SpeechRecognitionComponent() {
   const recognition: SpeechRecognition = new webkitSpeechRecognition() || new SpeechRecognition();
   recognition.lang = "nl-NL";
   recognition.interimResults = true;
-  recognition.continuous = true;
+  recognition.continuous = false;
 
   recognition.onresult = (event: SpeechRecognitionEvent) => {
     let index = event.results.length - 1;
