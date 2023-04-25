@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* "bg-white text-black text-xs p-4 m-2 rounded-md w-64 ml-auto relative after:block after:absolute after:bottom-0 after:right-0 after:inset-0 after:bg-pink-500 after:w-6 after:h-6 ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem, inventore praesentium corrupti mollitia, dolor officiis deserunt esse perspiciatis officia rerum, reiciendis modi adipisci natus magnam?</p> */
 
 .speechOutput {
   position: relative;
