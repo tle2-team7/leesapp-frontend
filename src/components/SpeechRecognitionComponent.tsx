@@ -12,10 +12,9 @@ export default function SpeechRecognitionComponent() {
 
   recognition.onresult = (event: SpeechRecognitionEvent) => {
     let index = event.results.length - 1;
-    console.log(event.results[index]);
     const transcript = event.results[index][0].transcript;
     if (event.results[index].isFinal) {
-      //place the spoken word in dom
+      // place the spoken word in dom
       const transcriptElement = document.createElement("p");
       transcriptElement.classList.add("speechOutput");
       transcriptElement.innerText = transcript;
