@@ -12,6 +12,13 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
   const recognition: SpeechRecognition = new webkitSpeechRecognition() || new SpeechRecognition();
   recognition.lang = "nl-NL";
   recognition.interimResults = true;
+
+  //if set to true, speech recognition wont turn off after a final sentence flag
+  //if set to false, speech recognition turns off after a final flag
+
+  //true breaks the ability to turn off the voice recognition, even after recognition.stop is called
+  //if set to false, speech recognition keeps turning off after every sentence
+  //TODO: add the ability to only listen for a voice when holding down the button.
   recognition.continuous = false;
 
   recognition.onresult = (event: SpeechRecognitionEvent) => {
