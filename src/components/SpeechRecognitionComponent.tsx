@@ -2,7 +2,11 @@ import { useState } from "react";
 import microphoneOn from "../img/microphoneOn.png";
 import microphoneOff from "../img/microphoneOff.png";
 
-export default function SpeechRecognitionComponent() {
+type TSpeechRecognitionProps = {
+  createMessage: Function;
+};
+
+export default function SpeechRecognitionComponent(props: TSpeechRecognitionProps) {
   const [hasStarted, setHasStarted] = useState<boolean>(false);
 
   const recognition: SpeechRecognition = new webkitSpeechRecognition() || new SpeechRecognition();
@@ -14,11 +18,8 @@ export default function SpeechRecognitionComponent() {
     let index = event.results.length - 1;
     const transcript = event.results[index][0].transcript;
     if (event.results[index].isFinal) {
-      // place the spoken word in dom
-      const transcriptElement = document.createElement("p");
-      transcriptElement.classList.add("speechOutput");
-      transcriptElement.innerText = transcript;
-      document.getElementById("speechRecognitionOutput")?.appendChild(transcriptElement);
+      //this is the function that creates a new MessageComponent, this function is in app.tsx
+      props.createMessage(transcript, true);
     }
   };
 
