@@ -2,6 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+.speechOutput {
+  position: relative;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  width: 16rem;
+  height: 100%;
+  font-size: 0.75rem /* 12px */;
+  line-height: 1rem /* 16px */;
+  margin-left: calc(100% - 18rem);
+}
+
+.speechOutput::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-bottom: 1.9rem solid white;
+
+  bottom: 0rem;
+  right: -1.3rem;
+}
+.sentenceToRead {
+  position: relative;
+  background-color: #474747;
+  color: white;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  width: 16rem;
+  height: 100%;
+  font-size: 0.75rem /* 12px */;
+  line-height: 1rem /* 16px */;
+  margin-left: 2rem;
+}
+
+.sentenceToRead::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-bottom: 1.9rem solid #474747;
+
+  bottom: 0rem;
+  left: -1.3rem;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
