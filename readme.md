@@ -69,6 +69,11 @@ Pull Changes
 git pull
 ```
 
+Update branches
+```
+git fetch
+```
+
 See branches
 ```
 git branch
