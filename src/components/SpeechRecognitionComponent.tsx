@@ -39,6 +39,7 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
   };
 
   recognition.onspeechend = () => {
+    setHasStarted(false);
     console.log("Speech has stopped being detected");
   };
 
