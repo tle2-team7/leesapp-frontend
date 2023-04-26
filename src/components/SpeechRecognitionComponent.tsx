@@ -31,16 +31,18 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
   };
 
   recognition.onaudiostart = () => {
+    setHasStarted(true);
     console.log("Audio capturing started");
-  };
-
-  recognition.onend = () => {
-    console.log("Speech recognition service disconnected");
   };
 
   recognition.onspeechend = () => {
     setHasStarted(false);
     console.log("Speech has stopped being detected");
+  };
+
+  recognition.onend = () => {
+    setHasStarted(false);
+    console.log("Speech recognition service disconnected");
   };
 
   recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
@@ -53,7 +55,6 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
     } else {
       recognition.stop();
     }
-    setHasStarted(!hasStarted);
   };
 
   return (
