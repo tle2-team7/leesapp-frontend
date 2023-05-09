@@ -9,7 +9,7 @@ type TSpeechRecognitionProps = {
 
 export default function SpeechRecognitionComponent(props: TSpeechRecognitionProps) {
   const [hasStarted, setHasStarted] = useState<boolean>(false);
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [isToolTipVisible, setIsToolTipVisible] = useState<boolean>(true);
 
   const recognition: SpeechRecognition = new webkitSpeechRecognition() || new SpeechRecognition();
   recognition.lang = "nl-NL";
@@ -52,7 +52,7 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
   };
 
   const handleSwitchRecognition = () => {
-    setIsVisible(false);
+    setIsToolTipVisible(false);
     if (!hasStarted) {
       recognition.start();
     } else {
@@ -62,7 +62,7 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
 
   return (
     <div>
-      <ToolTipComponent text={"klik hier om de app te laten luisteren"} visible={isVisible} />
+      <ToolTipComponent text={"klik hier om de app te laten luisteren"} visible={isToolTipVisible} />
       <button className="bg-white rounded-full w-18 h-18 flex justify-center items-center" onClick={() => handleSwitchRecognition()}>
         <img className="w-8" src={hasStarted ? microphoneOn : microphoneOff} alt="microphone" />
         {hasStarted}
