@@ -61,7 +61,7 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
   };
 
   return (
-    <div>
+    <div className="relative">
       <ToolTipComponent text={"klik hier om de app te laten luisteren"} visible={isToolTipVisible} />
       <button className="bg-white rounded-full w-18 h-18 flex justify-center items-center" onClick={() => handleSwitchRecognition()}>
         <img className="w-8" src={hasStarted ? microphoneOn : microphoneOff} alt="microphone" />
