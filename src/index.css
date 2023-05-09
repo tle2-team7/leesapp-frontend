@@ -59,6 +59,14 @@
   left: -1.3rem;
 }
 
+@mixin transition($time) {
+  transition: all $time ease;
+}
+@mixin center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

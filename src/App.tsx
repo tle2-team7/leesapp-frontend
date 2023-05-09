@@ -17,7 +17,11 @@ function App() {
   const [messages, setMessages] = useState<TMessage[]>([]);
 
   function createMessage(text: string, isUser: boolean) {
-    setMessages([...messages, { text: text, isUser: isUser }]);
+    if (!isUser) {
+      setMessages([...messages, { text: "", isUser: isUser }]);
+    } else {
+      setMessages([...messages, { text: text, isUser: isUser }]);
+    }
   }
 
   const shouldRun = useRef(true);
@@ -29,16 +33,7 @@ function App() {
   }, []);
 
   const start = async () => {
-    try {
-      if (runAPICalls) {
-        const jsonData = await getStartMessage();
-        createMessage(jsonData.choices[0].message.content, false);
-      } else {
-        createMessage("runAPICalls boolean is turned off, only turn on when using/working on API or GPT functionalities", false);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    createMessage("", false);
   };
 
   return (
