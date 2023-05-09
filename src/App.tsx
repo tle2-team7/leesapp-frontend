@@ -18,23 +18,21 @@ function App() {
 
   function createMessage(text: string, isUser: boolean) {
     if (!isUser) {
-      setMessages([...messages, { text: "", isUser: isUser }]);
+      setMessages([...messages, { text: text, isUser: isUser }]);
     } else {
       setMessages([...messages, { text: text, isUser: isUser }]);
     }
   }
 
+  //shouldrun ensures that the useEffect only runs once, without this the useEffect runs twice
+  //because of react strict mode being used in tandem with npm run dev
   const shouldRun = useRef(true);
   useEffect(() => {
     if (shouldRun.current) {
       shouldRun.current = false;
-      start();
+      createMessage("", false);
     }
   }, []);
-
-  const start = async () => {
-    createMessage("", false);
-  };
 
   return (
     <div className="App">
