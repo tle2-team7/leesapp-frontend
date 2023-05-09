@@ -9,7 +9,7 @@ type TSpeechRecognitionProps = {
 
 export default function SpeechRecognitionComponent(props: TSpeechRecognitionProps) {
   const [hasStarted, setHasStarted] = useState<boolean>(false);
-  const [isVisible, setShowToolTip] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
 
   const recognition: SpeechRecognition = new webkitSpeechRecognition() || new SpeechRecognition();
   recognition.lang = "nl-NL";
@@ -52,7 +52,7 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
   };
 
   const handleSwitchRecognition = () => {
-    setShowToolTip(false);
+    setIsVisible(false);
     if (!hasStarted) {
       recognition.start();
     } else {
