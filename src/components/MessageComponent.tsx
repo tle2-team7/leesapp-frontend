@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { TMessage } from "../App";
 import { getStartMessage } from "../api/getStartMessage";
-import loadingIcon from "../../public/loading.svg";
+import loadingIcon from "../../public/loading2.svg";
 
 type TMessageProps = {
   message: TMessage;
@@ -28,5 +28,5 @@ export default function MessageComponent(props: TMessageProps) {
     }
   };
 
-  return content ? <p className={props.message.isUser ? "speechOutput" : "sentenceToRead"}>{content}</p> : <img src={loadingIcon} alt="Loading icon" />;
+  return content ? <p className={props.message.isUser ? "speechOutput" : "sentenceToRead"}>{content}</p> : <img className="w-16 m-8" src={loadingIcon} alt="Loading icon" />;
 }
