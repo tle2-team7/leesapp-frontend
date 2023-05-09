@@ -1,11 +1,8 @@
-import { useState } from "react";
-import SpeechRecognitionComponent from "./components/SpeechRecognitionComponent";
-import MessageComponent from "./components/MessageComponent";
-
-export type TMessage = {
-  isUser: boolean;
-  text: String;
-};
+import { useState, useRef, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Assignment from './assignment/Assignment';
+import AssignmentSelection from './assignment_selection/AssignmentSelection';
+import Settings from './Settings/Settings';
 
 function App() {
   const [messages, setMessages] = useState<TMessage[]>([]);
@@ -15,20 +12,17 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="p-4 items-center justify-center w-screen bg-sky-600">
-        <h1 className="text-2xl">Speech recognition</h1>
-      </header>
-      <div id="speechRecognitionOutput" className="w-screen relative mb-24">
-        <p className="sentenceToRead">Hier komt tekst te staan wat moet worden voorgelezen. Deze komt vanuit de back-end en is gegenereerd door chatGPT</p>
-        {messages.map((message, idx) => (
-          <MessageComponent key={idx} message={message} />
-        ))}
-      </div>
-      <footer className="fixed bottom-0 p-4 flex items-center justify-center w-screen bg-sky-600">
-        <SpeechRecognitionComponent createMessage={createMessage} />
-      </footer>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ <Assignment/> }></Route>
+        <Route path="/assignment" element={ <Assignment/> }></Route>
+        <Route path="/opdracht" element={ <Assignment/> }></Route>
+
+        <Route path="/select" element={ <AssignmentSelection/> }></Route>
+
+        <Route path="/settings" element={ <Settings/> }></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
