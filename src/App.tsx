@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import SpeechRecognitionComponent from "./components/SpeechRecognitionComponent";
 import MessageComponent from "./components/MessageComponent";
-import { getStartMessage } from "./api/getStartMessage";
-
-// to save money, only turn this variable on when working on the API of gpt functionality
-// this is basically a switch for development that turns api calls off since every api call
-// costs us money
-let runAPICalls = false;
 
 export type TMessage = {
   isUser: boolean;
