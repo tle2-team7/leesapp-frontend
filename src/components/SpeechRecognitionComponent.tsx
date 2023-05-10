@@ -4,6 +4,7 @@ import microphoneOff from "../img/microphoneOff.png";
 
 type TSpeechRecognitionProps = {
   createMessage: Function;
+  promptTranscript: Function;
 };
 
 export default function SpeechRecognitionComponent(props: TSpeechRecognitionProps) {
@@ -26,7 +27,8 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
     const transcript = event.results[index][0].transcript;
     if (event.results[index].isFinal) {
       //this is the function that creates a new MessageComponent, this function is in app.tsx
-      props.createMessage(transcript, true);
+      props.createMessage(transcript, true, false);
+      props.promptTranscript(transcript);
     }
   };
 

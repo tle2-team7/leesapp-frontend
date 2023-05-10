@@ -1,22 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import SpeechRecognitionComponent from "./components/SpeechRecognitionComponent";
 import MessageComponent from "./components/MessageComponent";
+import { postPrompt } from "./api/postPrompt";
 
 export type TMessage = {
+  text: string;
   isUser: boolean;
-  text: String;
+  isFirst: boolean;
 };
 
 function App() {
   const [messages, setMessages] = useState<TMessage[]>([]);
 
-  function createMessage(text: string, isUser: boolean) {
-    if (!isUser) {
-      setMessages([...messages, { text: text, isUser: isUser }]);
-    } else {
-      setMessages([...messages, { text: text, isUser: isUser }]);
-    }
+  function createMessage(text: string, isUser: boolean, isFirst: boolean) {
+    setMessages((prevMessages) => [...prevMessages, { text: text, isUser: isUser, isFirst: isFirst }]);
   }
+
+  const promptTranscript = async (transcript: string) => {
+    const response = await postPrompt(transcript);
+    createMessage(response.choices[0].message.content, false, false);
+  };
 
   //shouldrun ensures that the useEffect only runs once, without this the useEffect runs twice
   //because of react strict mode being used in tandem with npm run dev
@@ -24,7 +27,7 @@ function App() {
   useEffect(() => {
     if (shouldRun.current) {
       shouldRun.current = false;
-      createMessage("", false);
+      createMessage("", false, true);
     }
   }, []);
 
@@ -39,7 +42,7 @@ function App() {
         ))}
       </div>
       <footer className="fixed bottom-0 p-4 flex items-center justify-center w-screen bg-sky-600">
-        <SpeechRecognitionComponent createMessage={createMessage} />
+        <SpeechRecognitionComponent createMessage={createMessage} promptTranscript={promptTranscript} />
       </footer>
     </div>
   );

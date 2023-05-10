@@ -1,7 +1,12 @@
 import { API_URL } from "./config";
 export async function getStartMessage() {
-  const response = await fetch(`${API_URL}/start`);
-  const jsonData = await response.json();
-  console.log(jsonData);
-  return jsonData;
+  try {
+    const response = await fetch(`${API_URL}/start`, {
+      method: "GET",
+    });
+    const jsonData = await response.json();
+    return jsonData;
+  } catch (error) {
+    console.log(error);
+  }
 }

@@ -9,6 +9,5 @@ export async function postPrompt(prompt: string) {
     }),
   });
   const jsonData = await response.json();
-  console.log(jsonData);
   return jsonData;
 }
