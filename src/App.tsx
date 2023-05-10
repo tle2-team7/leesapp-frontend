@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Assignment from './assignment/Assignment';
 import AssignmentSelection from './assignment_selection/AssignmentSelection';
-import Settings from './Settings/Settings';
+import Settings from './settings/Settings';
 
 function App() {
   const [messages, setMessages] = useState<TMessage[]>([]);
