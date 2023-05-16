@@ -26,12 +26,12 @@ function AssignmentSelection() {
 
 
   return (
-    <div className="AssignmentSelection">
-      <header>
-        <h1 className="text-3xl font-bold mb-8">Choose Assignment Topic</h1>
+    <div className="AssignmentSelection flex flex-col min-h-screen">
+      <header className="bg-surface-main-150 text-center py-4">
+        <h1 className="text-3xl font-bold">Kies een opdracht onderwerp</h1>
       </header>
 
-      <div className="grid grid-cols-2 gap-4 p-8">
+      <div className="grid grid-cols-2 gap-4 p-8 flex-grow">
         {assignmentTopic.map((topic, index) => (
           <button
             key={index}
@@ -48,7 +48,9 @@ function AssignmentSelection() {
         ))}
       </div>
 
-      <footer>footer</footer>
+      <footer className="bg-surface-main-150 py-4 text-center">
+        TLE Team 7
+      </footer>
     </div>
   );
 }
