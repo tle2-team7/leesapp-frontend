@@ -1,34 +1,54 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AssignmentSelection() {
+  const assignmentTopic = [
+    { title: 'begroetingen', progress: 7 },
+    { title: 'familie', progress: 5 },
+    { title: 'boodschappen', progress: 9 },
+    { title: 'vervoer', progress: 8 },
+    { title: 'vrijetijd', progress: 0 },
+    { title: 'wonen', progress: 0 },
+    { title: 'werk', progress: 0 },
+    { title: 'eten', progress: 0 },
+  ];
+
+
+  const navigate = useNavigate();
+
+  const handleTopicClick = (topic) => {
+    navigate(`/assignment?topic=${topic.title}`);
+  };
+
+  const capitalizeFirstLetter = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
 
   return (
     <div className="AssignmentSelection">
-        <header>
-          <h1>AssignmentSelection Screen goes here</h1>
-        </header>
-        
-        <div className="bg-surface-main-150">
-          <div>
-            <p>Boodschappen </p>
-          </div>
-          <div>
-            <p>0/10</p>
-          </div>
-        </div>
+      <header>
+        <h1 className="text-3xl font-bold mb-8">Choose Assignment Topic</h1>
+      </header>
 
-        <div className="bg-surface-main-150">
-          <div>
-            <p>Hobby</p>
-          </div>
-          <div>
-            <p>0/10</p>
-          </div>
-        </div>
+      <div className="grid grid-cols-2 gap-4 p-8">
+        {assignmentTopic.map((topic, index) => (
+          <button
+            key={index}
+            className="bg-surface-main-150 hover:bg-surface-dark-100 text-black font-bold py-2 px-4 rounded"
+            onClick={() => handleTopicClick(topic)}
+          >
+            <div>
+              <p>{capitalizeFirstLetter(topic.title)}</p>
+            </div>
+            <div className="text-center text-gray-500 text-sm">
+              <p>{topic.progress}/10</p>
+            </div>
+          </button>
+        ))}
+      </div>
 
-        <footer>
-          footer
-        </footer>
+      <footer>footer</footer>
     </div>
   );
 }
