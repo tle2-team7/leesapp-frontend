@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { TMessage } from "../App";
-import { getStartMessage } from "../api/getStartMessage";
 import { postPrompt } from "../api/postPrompt";
 import loadingIcon from "../../public/loading2.svg";
 
@@ -13,7 +12,6 @@ export default function MessageComponent(props: TMessage) {
   const [text, setText] = useState<string>(props.text);
   const [prompt] = useState<string>(props.prompt);
   const [isUser] = useState<boolean>(props.isUser);
-  const [isFirst] = useState<boolean>(props.isFirst);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -23,35 +21,23 @@ export default function MessageComponent(props: TMessage) {
   useEffect(() => {
     if (shouldRun.current) {
       shouldRun.current = false;
-      if (isFirst) {
-        generateStartMessage();
+      if (!prompt && !text) {
+        //initial message, start message
+        generateGPTMessage("");
       } else if (prompt) {
+        //gpt responds to user
         generateGPTMessage(prompt);
       } else if (text) {
+        //user message
         setIsLoading(false);
       } else {
+        //error
         setIsLoading(false);
-        setText("Error");
+        setText("An error occurred");
+        console.error(`An error occurred, prompt: ${prompt}, text: ${text}, isUser: ${isUser}`);
       }
     }
   }, []);
-
-  //only happens when the application first starts and a start message
-  //needs to be generated.
-  const generateStartMessage = async () => {
-    if (!runAPICalls) {
-      setText("runAPICalls boolean has been set to false. Set to true to run api calls. Only set to true when working on the API, GPT, or for testing purposes");
-      return;
-    }
-    getStartMessage()
-      .then((response) => {
-        setText(response.choices[0].message.content);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   const generateGPTMessage = async (prompt: string) => {
     if (!runAPICalls) {

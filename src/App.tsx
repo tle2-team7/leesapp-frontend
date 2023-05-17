@@ -3,10 +3,9 @@ import SpeechRecognitionComponent from "./components/SpeechRecognitionComponent"
 import MessageComponent from "./components/MessageComponent";
 
 export type TMessage = {
-  text: string; //user message
-  prompt: string; //prompt to make a gpt response
+  text: string;
+  prompt: string;
   isUser: boolean;
-  isFirst: boolean;
 };
 
 function App() {
@@ -18,12 +17,12 @@ function App() {
   useEffect(() => {
     if (shouldRun.current) {
       shouldRun.current = false;
-      createMessage("", "", false, true);
+      createMessage("", "", false);
     }
   }, []);
 
-  function createMessage(text: string, prompt: string, isUser: boolean, isFirst: boolean) {
-    setMessages((prevMessages) => [...prevMessages, { text: text, prompt: prompt, isUser: isUser, isFirst: isFirst }]);
+  function createMessage(text: string, prompt: string, isUser: boolean) {
+    setMessages((prevMessages) => [...prevMessages, { text: text, prompt: prompt, isUser: isUser }]);
   }
 
   return (
@@ -33,7 +32,7 @@ function App() {
       </header>
       <div className="w-screen relative mb-24">
         {messages.map((message, idx) => (
-          <MessageComponent key={idx} text={message.text} prompt={message.prompt} isUser={message.isUser} isFirst={message.isFirst} />
+          <MessageComponent key={idx} text={message.text} prompt={message.prompt} isUser={message.isUser} />
         ))}
       </div>
       <footer className="fixed bottom-0 p-4 flex items-center justify-center w-screen bg-sky-600">
