@@ -4,7 +4,6 @@ import microphoneOff from "../img/microphoneOff.png";
 
 type TSpeechRecognitionProps = {
   createMessage: Function;
-  promptTranscript: Function;
 };
 
 export default function SpeechRecognitionComponent(props: TSpeechRecognitionProps) {
@@ -26,9 +25,11 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
     let index = event.results.length - 1;
     const transcript = event.results[index][0].transcript;
     if (event.results[index].isFinal) {
-      //this is the function that creates a new MessageComponent, this function is in app.tsx
-      props.createMessage(transcript, true, false);
-      props.promptTranscript(transcript);
+      //create message props: text: string, prompt: string, isUser: boolean, isFirst: boolean
+      //create the user's message
+      props.createMessage(transcript, "", true, false);
+      //generate a gpt response message
+      props.createMessage("", transcript, false, false);
     }
   };
 

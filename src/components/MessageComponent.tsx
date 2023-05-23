@@ -1,20 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { TMessage } from "../App";
-import { getStartMessage } from "../api/getStartMessage";
+import { postPrompt } from "../api/postPrompt";
 import loadingIcon from "../../public/loading2.svg";
-
-type TMessageProps = {
-  message: TMessage;
-};
 
 // to save money, only turn this variable on when working on the API of gpt functionality
 // this is basically a switch for development that turns api calls off since every api call
 // costs us money
-let runAPICalls = true;
+const runAPICalls = true;
 
-export default function MessageComponent(props: TMessageProps) {
-  const [content, setContent] = useState<string>();
-  const [isUser, setIsUser] = useState<boolean>();
+export default function MessageComponent(props: TMessage) {
+  const [text, setText] = useState<string>(props.text);
+  const [prompt] = useState<string>(props.prompt);
+  const [isUser] = useState<boolean>(props.isUser);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   //shouldrun ensures that the useEffect only runs once, without this the useEffect runs twice
   //because of react strict mode being used in tandem with npm run dev
@@ -22,24 +21,40 @@ export default function MessageComponent(props: TMessageProps) {
   useEffect(() => {
     if (shouldRun.current) {
       shouldRun.current = false;
-      setIsUser(props.message.isUser);
-      setContent(props.message.text);
-      if (props.message.isFirst) generateStartMessage();
+      if (!prompt && !text) {
+        //initial message, start message
+        generateGPTMessage("");
+      } else if (prompt) {
+        //gpt responds to user
+        generateGPTMessage(prompt);
+      } else if (text) {
+        //user message
+        setIsLoading(false);
+      } else {
+        //error
+        setIsLoading(false);
+        setText("An error occurred");
+        console.error(`An error occurred, prompt: ${prompt}, text: ${text}, isUser: ${isUser}`);
+      }
     }
   }, []);
 
-  //only happens when the application first starts and a start message
-  //needs to be generated.
-  const generateStartMessage = async () => {
+  const generateGPTMessage = async (prompt: string) => {
     if (!runAPICalls) {
-      setContent("runAPICalls boolean has been set to false. Set to true to run api calls. Only set to true when working on the API, GPT, or for testing purposes");
+      setText("runAPICalls boolean has been set to false. Set to true to run api calls. Only set to true when working on the API, GPT, or for testing purposes");
       return;
     }
-    const jsonData = await getStartMessage();
-    setContent(jsonData.choices[0].message.content);
+    postPrompt(prompt)
+      .then((response) => {
+        setText(response.choices[0].message.content);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   //show loading animation until content been received from api.
   //if the message is from a user show speechOutput styling, else show sentenceToRead styling
-  return content ? <p className={isUser ? "speechOutput" : "sentenceToRead"}>{content}</p> : <img className="w-16 m-8" src={loadingIcon} alt="Loading icon" />;
+  return isLoading ? <img className="w-16 m-8" src={loadingIcon} alt="Loading icon" /> : <p className={isUser ? "message messageUser" : "message messageGpt"}>{text}</p>;
 }
