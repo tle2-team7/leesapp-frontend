@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.speechOutput {
+.message {
   position: relative;
   background-color: white;
   color: black;
@@ -16,7 +16,11 @@
   margin-left: calc(100% - 18rem);
 }
 
-.speechOutput::after {
+.messageUser {
+  background-color: white;
+}
+
+.messageUser::after {
   display: block;
   position: absolute;
   content: "";
@@ -30,21 +34,13 @@
   bottom: 0rem;
   right: -1.3rem;
 }
-.sentenceToRead {
-  position: relative;
+
+.messageGpt {
   background-color: #474747;
   color: white;
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
-  width: 16rem;
-  height: 100%;
-  font-size: 0.75rem /* 12px */;
-  line-height: 1rem /* 16px */;
   margin-left: 2rem;
 }
-
-.sentenceToRead::after {
+.messageGpt::after {
   display: block;
   position: absolute;
   content: "";
@@ -66,7 +62,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: rgb(218, 218, 218);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
