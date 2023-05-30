@@ -1,20 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AssignmentSelection() {
-  const assignmentTopic = [
-    { title: 'begroetingen', progress: 7 },
-    { title: 'familie', progress: 5 },
-    { title: 'boodschappen', progress: 9 },
-    { title: 'vervoer', progress: 8 },
-    { title: 'vrijetijd', progress: 0 },
-    { title: 'wonen', progress: 0 },
-    { title: 'werk', progress: 0 },
-    { title: 'eten', progress: 0 },
-  ];
+  const [assignmentTopic, setAssignmentTopic] = useState([]);
 
+  // const assignmentTopic = [
+  //   { title: 'begroetingen', progress: 7 },
+  //   { title: 'familie', progress: 5 },
+  //   { title: 'boodschappen', progress: 9 },
+  //   { title: 'vervoer', progress: 8 },
+  //   { title: 'vrijetijd', progress: 0 },
+  //   { title: 'wonen', progress: 0 },
+  //   { title: 'werk', progress: 0 },
+  //   { title: 'eten', progress: 0 },
+  // ];
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Fetch JSON data from external file
+    fetch("data.json")
+      .then((response) => response.json())
+      .then((data) => setAssignmentTopic(data))
+      .catch((error) => console.error(error));
+  }, []);
 
   const handleTopicClick = (topic) => {
     navigate(`/assignment?topic=${topic.title}`);
