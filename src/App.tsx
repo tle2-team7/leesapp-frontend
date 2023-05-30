@@ -1,4 +1,4 @@
-import { MouseEvent, MouseEventHandler, useState } from "react";
+import { useState } from "react";
 import SpeechRecognitionComponent from "./components/SpeechRecognitionComponent";
 import MessageComponent from "./components/MessageComponent";
 import speak from "./components/TextToSpeechComponent";
