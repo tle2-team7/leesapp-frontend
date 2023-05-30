@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { MouseEvent, MouseEventHandler, useState } from "react";
 import SpeechRecognitionComponent from "./components/SpeechRecognitionComponent";
 import MessageComponent from "./components/MessageComponent";
+import speak from "./components/TextToSpeechComponent";
 
 export type TMessage = {
   isUser: boolean;
@@ -8,17 +9,6 @@ export type TMessage = {
 };
 
 function App() {
-  const synth = window.speechSynthesis;
-
-  const handleClickSentence = (e: React.MouseEvent<HTMLElement>) => {
-    speak(e.target.textContent);
-  };
-
-  function speak(sentence: string) {
-    const utterThis = new SpeechSynthesisUtterance(sentence);
-    synth.speak(utterThis);
-  }
-
   const [messages, setMessages] = useState<TMessage[]>([]);
 
   function createMessage(text: string, isUser: boolean) {
@@ -26,12 +16,12 @@ function App() {
   }
 
   return (
-    <div className="App" onClick={handleClickSentence}>
+    <div className="App" onClick={(e) => speak(e)}>
       <header className="p-4 items-center justify-center w-screen bg-sky-600">
         <h1 className="text-2xl">Speech recognition</h1>
       </header>
       <div id="speechRecognitionOutput" className="w-screen relative mb-24">
-        <p className="sentenceToRead">Hier komt tekst te staan wat moet worden voorgelezen. Deze komt vanuit de back-end en is gegenereerd door chatGPT</p>
+        <p className="sentenceToRead">TEST</p>
         {messages.map((message, idx) => (
           <MessageComponent key={idx} message={message} />
         ))}
