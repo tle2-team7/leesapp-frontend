@@ -60,9 +60,9 @@ function AssignmentSelection() {
             onClick={() => handleTopicClick(topic)}
           >
             <div>
-              <p>{capitalizeFirstLetter(topic.title)}</p>
+              <p className="text-black">{capitalizeFirstLetter(topic.title)}</p>
             </div>
-            <div className="text-center text-gray-500 text-sm">
+            <div className="text-center text-black text-sm">
               <p>{topic.progress}/10</p>
             </div>
           </button>

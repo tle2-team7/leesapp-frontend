@@ -51,10 +51,10 @@ function Assignment(){
 
   return (
     <div className="Assignment">
-      <header className="p-4 items-center justify-center w-screen bg-sky-600">
+      <header className="p-4 items-center justify-center w-screen bg-secondary-main-500">
         <h1 className="text-2xl text-center">Leer lezen met GPT</h1>
       </header>
-      <div className="w-screen relative mb-24" ref={messagesContainerRef}>
+      <div className="w-screen relative mb-24 text-black" ref={messagesContainerRef}>
         {messages.map((message, idx) => (
           <MessageComponent key={idx} text={message.text} prompt={message.prompt} isUser={message.isUser} />
         ))}
