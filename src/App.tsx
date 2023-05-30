@@ -5,12 +5,6 @@ import AssignmentSelection from "./assignment_selection/AssignmentSelection";
 import Settings from "./settings/Settings";
 
 function App() {
-  const [messages, setMessages] = useState<TMessage[]>([]);
-
-  function createMessage(text: string, isUser: boolean) {
-    setMessages([...messages, { text: text, isUser: isUser }]);
-  }
-
   return (
     <BrowserRouter>
       <Routes>
