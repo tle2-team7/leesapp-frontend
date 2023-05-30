@@ -1,0 +1,34 @@
+[
+    {
+        "title": "begroetingen",
+        "progress": 7
+    },
+    {
+        "title": "familie",
+        "progress": 5
+    },
+    {
+        "title": "boodschappen",
+        "progress": 9
+    },
+    {
+        "title": "vervoer",
+        "progress": 8
+    },
+    {
+        "title": "vrijetijd",
+        "progress": 0
+    },
+    {
+        "title": "wonen",
+        "progress": 0
+    },
+    {
+        "title": "werk",
+        "progress": 0
+    },
+    {
+        "title": "eten",
+        "progress": 0
+    }
+]
