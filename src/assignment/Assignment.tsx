@@ -15,9 +15,9 @@ function Assignment(){
   const [messages, setMessages] = useState<TMessage[]>([]);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
-  function createMessage(text: string, isUser: boolean, isFirst: boolean) {
-    setMessages((prevMessages) => [...prevMessages, { text: text, isUser: isUser, isFirst: isFirst }]);
-  }
+  // function createMessage(text: string, isUser: boolean, isFirst: boolean) {
+  //   setMessages((prevMessages) => [...prevMessages, { text: text, isUser: isUser, isFirst: isFirst }]);
+  // }
 
   const promptTranscript = async (transcript: string) => {
     const response = await postPrompt(transcript);
