@@ -25,10 +25,22 @@ function AssignmentSelection() {
       .catch((error) => console.error(error));
   }, []);
 
+    /**
+   * Handle click event for a topic button.
+   * Navigates to the assignment page with the selected topic.
+   * Gives the selected topic type in the get request so the topic can be worked into the prompt to gpt as a variable.
+   * @param {object} topic - The selected topic object.
+   */
   const handleTopicClick = (topic) => {
     navigate(`/assignment?topic=${topic.title}`);
   };
 
+  /**
+   * Capitalize the first letter of a word.
+   * Topics will be saved without capitalisation
+   * @param {string} word - The word to capitalize.
+   * @returns {string} The word with the first letter capitalized.
+   */
   const capitalizeFirstLetter = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   };
