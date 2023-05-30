@@ -59,7 +59,7 @@ function Assignment(){
           <MessageComponent key={idx} text={message.text} prompt={message.prompt} isUser={message.isUser} />
         ))}
       </div>
-      <footer className="fixed bottom-0 p-4 flex items-center justify-center w-screen bg-sky-600">
+      <footer className="fixed bottom-0 p-4 flex items-center justify-center w-screen bg-secondary-main-500">
         <SpeechRecognitionComponent createMessage={createMessage} />
       </footer>
     </div>
