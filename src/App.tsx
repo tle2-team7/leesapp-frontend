@@ -8,6 +8,17 @@ export type TMessage = {
 };
 
 function App() {
+  const synth = window.speechSynthesis;
+
+  const handleClickSentence = (e: React.MouseEvent<HTMLElement>) => {
+    speak(e.target.textContent);
+  };
+
+  function speak(sentence: string) {
+    const utterThis = new SpeechSynthesisUtterance(sentence);
+    synth.speak(utterThis);
+  }
+
   const [messages, setMessages] = useState<TMessage[]>([]);
 
   function createMessage(text: string, isUser: boolean) {
@@ -15,7 +26,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" onClick={handleClickSentence}>
       <header className="p-4 items-center justify-center w-screen bg-sky-600">
         <h1 className="text-2xl">Speech recognition</h1>
       </header>
