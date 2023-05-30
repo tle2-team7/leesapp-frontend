@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import SpeechRecognitionComponent from "../components/SpeechRecognitionComponent";
 import MessageComponent from "../components/MessageComponent";
 import { postPrompt } from "../api/postPrompt";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import speak from "../components/TextToSpeechComponent";
 
 export type TMessage = {
   text: string;
@@ -13,9 +15,9 @@ function Assignment(){
   const [messages, setMessages] = useState<TMessage[]>([]);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
-  function createMessage(text: string, isUser: boolean, isFirst: boolean) {
-    setMessages((prevMessages) => [...prevMessages, { text: text, isUser: isUser, isFirst: isFirst }]);
-  }
+  // function createMessage(text: string, isUser: boolean, isFirst: boolean) {
+  //   setMessages((prevMessages) => [...prevMessages, { text: text, isUser: isUser, isFirst: isFirst }]);
+  // }
 
   const promptTranscript = async (transcript: string) => {
     const response = await postPrompt(transcript);
@@ -50,7 +52,7 @@ function Assignment(){
   }
 
   return (
-    <div className="Assignment">
+    <div className="Assignment" onClick={(e) => speak(e)}>
       <header className="p-4 items-center justify-center w-screen bg-secondary-main-500">
         <h1 className="text-2xl text-center">Leer lezen met GPT</h1>
       </header>
