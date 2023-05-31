@@ -21,7 +21,7 @@ function Assignment(){
 
   const promptTranscript = async (transcript: string) => {
     const response = await postPrompt(transcript);
-    createMessage(response.choices[0].message.content, false, false);
+    createMessage("", response.choices[0].message.content, false);
   };
 
   //shouldrun ensures that the useEffect only runs once, without this the useEffect runs twice
