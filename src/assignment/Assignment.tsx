@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import SpeechRecognitionComponent from "../components/SpeechRecognitionComponent";
 import MessageComponent, { TMessage } from "../components/MessageComponent";
-import { postPrompt } from "../api/postPrompt";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import speak from "../components/TextToSpeechComponent";
 
 function Assignment() {
