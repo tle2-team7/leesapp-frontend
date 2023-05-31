@@ -27,9 +27,9 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
     if (event.results[index].isFinal) {
       //create message props: text: string, prompt: string, isUser: boolean, isFirst: boolean
       //create the user's message
-      props.createMessage(transcript, "", true, false);
+      props.createMessage(transcript, "", true);
       //generate a gpt response message
-      props.createMessage("", transcript, false, false);
+      props.createMessage("", transcript, false);
     }
   };
 
