@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { TMessage } from "../App";
 import { postPrompt } from "../api/postPrompt";
 import loadingIcon from "../../public/loading2.svg";
 
@@ -7,6 +6,12 @@ import loadingIcon from "../../public/loading2.svg";
 // this is basically a switch for development that turns api calls off since every api call
 // costs us money
 const runAPICalls = true;
+
+export type TMessage = {
+  text: string;
+  prompt: string;
+  isUser: boolean;
+};
 
 export default function MessageComponent(props: TMessage) {
   const [text, setText] = useState<string>(props.text);

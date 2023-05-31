@@ -1,28 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import SpeechRecognitionComponent from "../components/SpeechRecognitionComponent";
-import MessageComponent from "../components/MessageComponent";
+import MessageComponent, { TMessage } from "../components/MessageComponent";
 import { postPrompt } from "../api/postPrompt";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import speak from "../components/TextToSpeechComponent";
 
-export type TMessage = {
-  text: string;
-  prompt: string;
-  isUser: boolean;
-};
-
-function Assignment(){
+function Assignment() {
   const [messages, setMessages] = useState<TMessage[]>([]);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
-
-  // function createMessage(text: string, isUser: boolean, isFirst: boolean) {
-  //   setMessages((prevMessages) => [...prevMessages, { text: text, isUser: isUser, isFirst: isFirst }]);
-  // }
-
-  const promptTranscript = async (transcript: string) => {
-    const response = await postPrompt(transcript);
-    createMessage("", response.choices[0].message.content, false);
-  };
 
   //shouldrun ensures that the useEffect only runs once, without this the useEffect runs twice
   //because of react strict mode being used in tandem with npm run dev
