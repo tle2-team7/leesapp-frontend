@@ -1,8 +1,9 @@
 const synth = window.speechSynthesis;
 
 export default function speak(event: React.MouseEvent<HTMLDivElement>) {
-  if ((event.target as HTMLElement).nodeName != "DIV") {
-    const sentence = (event.target as HTMLElement).textContent;
+  const target = event.target as HTMLElement;
+  if (target.nodeName != "DIV" && target.nodeName != "BUTTON" && target.nodeName != "DIALOG") {
+    const sentence = target.textContent;
     if (sentence !== null) {
       const utterThis = new SpeechSynthesisUtterance(sentence);
       utterThis.lang = "nl";

@@ -1,13 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ModalComponent() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == dialogRef.current) {
+      dialogRef.current?.close();
+    }
+  };
   return (
     <div>
-      <button className="w-8 h-8 p-0 z-10 -bottom-2 left-64 absolute rounded-full flex items-center justify-center text-center bg-secondary-dark-300 text-white" onClick={() => setIsOpen(!isOpen)}>
+      <button onClick={() => dialogRef.current?.showModal()} className="w-8 h-8 p-0 z-10 -bottom-2 left-64 absolute rounded-full flex items-center justify-center text-center bg-secondary-dark-300 text-white">
         i
       </button>
-      <dialog open={isOpen}>
+      <dialog ref={dialogRef}>
         <p>Deze zin is gegenereerd door een kunstmatige intelligentie. Er wordt gekeken naar:</p>
         <ul>
           <li>Vorige antwoorden</li>
