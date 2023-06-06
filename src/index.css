@@ -54,7 +54,7 @@ body {
 
 .messageGpt {
   background-color: #474747;
-  /* color: white; */
+  color: white;
   margin-left: 2rem;
 }
 
@@ -67,7 +67,7 @@ body {
 
   border-left: 1.5rem solid transparent;
   border-right: 1.5rem solid transparent;
-  border-bottom: 1.9rem solid #fcfcfc;
+  border-bottom: 1.9rem solid #474747;
 
   bottom: 0rem;
   left: -1.3rem;

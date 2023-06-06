@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import SpeechRecognitionComponent from "../components/SpeechRecognitionComponent";
 import MessageComponent, { TMessage } from "../components/MessageComponent";
 import speak from "../components/TextToSpeechComponent";
+import ModelComponent from "../components/ModelComponent";
 
 function Assignment() {
   const [messages, setMessages] = useState<TMessage[]>([]);
@@ -44,6 +45,7 @@ function Assignment() {
           <MessageComponent key={idx} text={message.text} prompt={message.prompt} isUser={message.isUser} />
         ))}
       </div>
+      <ModelComponent />
       <footer className="fixed bottom-0 p-4 flex items-center justify-center w-screen bg-secondary-main-500">
         <SpeechRecognitionComponent createMessage={createMessage} />
       </footer>
