@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { postPrompt } from "../api/postPrompt";
-import loadingIcon from "../../public/loading2.svg";
+import loadingIcon from "/loading2.svg";
 
 // to save money, only turn this variable on when working on the API of gpt functionality
 // this is basically a switch for development that turns api calls off since every api call
 // costs us money
-const runAPICalls = true;
+const runAPICalls = false;
 
 export type TMessage = {
   text: string;
