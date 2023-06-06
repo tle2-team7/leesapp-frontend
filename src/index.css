@@ -9,7 +9,7 @@ body {
 .message {
   position: relative;
   background-color: white;
-  color: black;  
+  color: black;
   padding: 1rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
@@ -41,23 +41,23 @@ body {
 
 /* .sentenceToRead {
   position: relative; */
-  /* background-color: #EEEEEE;
+/* background-color: #EEEEEE;
   color: hsla(0, 0%, 0%, 0.86); */
-  /* padding: 1rem;
+/* padding: 1rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
   width: 16rem;
   height: 100%; */
-  /* font-size: 0.75rem /* 12px */;
-  /* line-height: 1rem /* 16px */;
+/* font-size: 0.75rem /* 12px */
+/* line-height: 1rem /* 16px */
 /* } */
 
 .messageGpt {
   background-color: #474747;
-  /* color: white; */
+  color: white;
   margin-left: 2rem;
 }
-  
+
 .messageGpt::after {
   display: block;
   position: absolute;
@@ -67,7 +67,7 @@ body {
 
   border-left: 1.5rem solid transparent;
   border-right: 1.5rem solid transparent;
-  border-bottom: 1.9rem solid #FCFCFC;
+  border-bottom: 1.9rem solid #474747;
 
   bottom: 0rem;
   left: -1.3rem;
