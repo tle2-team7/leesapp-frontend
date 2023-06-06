@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { postPrompt } from "../api/postPrompt";
 import loadingIcon from "/loading2.svg";
+import ModalComponent from "./ModalComponent";
 
 // to save money, only turn this variable on when working on the API of gpt functionality
 // this is basically a switch for development that turns api calls off since every api call
 // costs us money
-const runAPICalls = false;
+const runAPICalls = true;
 
 export type TMessage = {
   text: string;
@@ -61,5 +62,12 @@ export default function MessageComponent(props: TMessage) {
 
   //show loading animation until content been received from api.
   //if the message is from a user show speechOutput styling, else show sentenceToRead styling
-  return isLoading ? <img className="w-16 m-8" src={loadingIcon} alt="Loading icon" /> : <p className={isUser ? "message messageUser" : "message messageGpt"}>{text}</p>;
+  return isLoading ? (
+    <img className="w-16 m-8" src={loadingIcon} alt="Loading icon" />
+  ) : (
+    <div className="relative">
+      <p className={isUser ? "message messageUser" : "message messageGpt"}>{text}</p>
+      {isUser ? "" : <ModalComponent />}
+    </div>
+  );
 }

@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 
-export default function ModelComponent() {
+export default function ModalComponent() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div>
-      <button className="w-8 h-8 p-0 rounded-full flex items-center justify-center text-center bg-secondary-dark-300 text-white" onClick={() => setIsOpen(!isOpen)}>
+      <button className="w-8 h-8 p-0 z-10 -bottom-2 left-64 absolute rounded-full flex items-center justify-center text-center bg-secondary-dark-300 text-white" onClick={() => setIsOpen(!isOpen)}>
         i
       </button>
       <dialog open={isOpen}>
