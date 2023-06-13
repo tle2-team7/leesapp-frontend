@@ -10,7 +10,7 @@ export default function ModalComponent() {
   };
   return (
     <div>
-      <button onClick={() => dialogRef.current?.showModal()} className="w-8 h-8 p-0 z-10 -bottom-2 left-64 absolute rounded-full flex items-center justify-center text-center bg-secondary-dark-300 text-white">
+      <button onClick={() => dialogRef.current?.showModal()} className="w-6 h-6 p-0 z-10 -bottom-2 left-72 absolute rounded-full flex items-center justify-center text-center bg-secondary-dark-300 text-white">
         i
       </button>
       <dialog ref={dialogRef}>
