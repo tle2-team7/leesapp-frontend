@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function ModalComponent() {
   const dialogRef = useRef<HTMLDialogElement>(null);
