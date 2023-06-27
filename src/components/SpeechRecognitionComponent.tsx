@@ -1,6 +1,7 @@
 import { useState } from "react";
 import microphoneOn from "../img/microphoneOn.png";
 import microphoneOff from "../img/microphoneOff.png";
+import ToolTipComponent from "./ToolTipComponent";
 
 type TSpeechRecognitionProps = {
   createMessage: Function;
@@ -8,6 +9,7 @@ type TSpeechRecognitionProps = {
 
 export default function SpeechRecognitionComponent(props: TSpeechRecognitionProps) {
   const [hasStarted, setHasStarted] = useState<boolean>(false);
+  const [toolTipIsVisible, setToolTipIsVisible] = useState<boolean>(true);
 
   const recognition: SpeechRecognition = new webkitSpeechRecognition() || new SpeechRecognition();
   recognition.lang = "nl-NL";
@@ -53,6 +55,7 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
   };
 
   const handleSwitchRecognition = () => {
+    setToolTipIsVisible(false);
     if (!hasStarted) {
       recognition.start();
     } else {
@@ -62,7 +65,8 @@ export default function SpeechRecognitionComponent(props: TSpeechRecognitionProp
 
   return (
     <div>
-      <button className="bg-white rounded-full w-18 h-18 flex justify-center items-center" onClick={() => handleSwitchRecognition()}>
+      <ToolTipComponent text="Klik hier om te beginnen met voorlezen" visible={toolTipIsVisible} />
+      <button className="bg-white rounded-full w-18 h-18 flex justify-center items-center " onClick={() => handleSwitchRecognition()}>
         <img className="w-8" src={hasStarted ? microphoneOn : microphoneOff} alt="microphone" />
         {hasStarted}
       </button>

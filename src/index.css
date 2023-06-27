@@ -73,6 +73,21 @@ body {
   left: -1.3rem;
 }
 
+.arrowDown::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+
+  border-left: 1.5rem solid transparent;
+  border-right: 1.5rem solid transparent;
+  border-top: 1.5rem solid white;
+
+  bottom: -1rem;
+  left: 2rem;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
