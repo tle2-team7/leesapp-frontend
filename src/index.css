@@ -113,6 +113,22 @@ a:hover {
   color: #535bf2;
 } */
 
+dialog {
+  background-color: white;
+  color: black;
+  border-radius: 1rem;
+}
+
+dialog::backdrop {
+  background-color: hsla(0, 0%, 0%, 0.25);
+}
+
+dialog li {
+  margin-left: 1rem;
+  list-style: initial;
+  text-decoration: dotted;
+}
+
 body {
   margin: 0;
   /* display: flex;
