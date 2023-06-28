@@ -6,13 +6,13 @@ import Assignment from "./assignment/Assignment";
 import AssignmentSelection from "./assignment_selection/AssignmentSelection";
 import Settings from "./settings/Settings";
 import speak from "./components/TextToSpeechComponent";
-
+import Home from "./home/Home";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Assignment />}></Route>
+        <Route path="/home" element={<Home />}></Route>
         <Route path="/assignment" element={<Assignment />}></Route>
         <Route path="/opdracht" element={<Assignment />}></Route>
 
