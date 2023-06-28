@@ -28,14 +28,18 @@ Watch
 
 ## Branches
 
-STABLE BRANCHES: production/v0.1  
+STABLE BRANCHES: 
+
+production/v0.1  
 release/v0.1.0  
 dev
 
-UNSTABLE BRANCHES: feature/name-name  
-bugfix/name-name
+UNSTABLE BRANCHES: 
 
-hotfix/name-name
+feature/00-name  
+bugfix/00-name
+
+hotfix/00-name
 
 ### flow
 
@@ -63,6 +67,17 @@ Pull Changes
 
 ```
 git pull
+```
+
+Update branches
+```
+git fetch
+```
+
+See branches
+```
+git branch
+git branch -r
 ```
 
 New branch from current

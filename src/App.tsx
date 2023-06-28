@@ -1,13 +1,26 @@
-import { useState } from "react";
-import "./App.css";
+import { useState, useRef, useEffect } from "react";
+import SpeechRecognitionComponent from "./components/SpeechRecognitionComponent";
+import MessageComponent from "./components/MessageComponent";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Assignment from "./assignment/Assignment";
+import AssignmentSelection from "./assignment_selection/AssignmentSelection";
+import Settings from "./settings/Settings";
+import speak from "./components/TextToSpeechComponent";
+import Home from "./home/Home";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <h1>lees app goes here...</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/assignment" element={<Assignment />}></Route>
+        <Route path="/opdracht" element={<Assignment />}></Route>
+
+        <Route path="/select" element={<AssignmentSelection />}></Route>
+        <Route path="/settings" element={<Settings />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
