@@ -38,7 +38,7 @@ function Assignment() {
   return (
     <div className="Assignment" onClick={(e) => speak(e)}>
       <header className="p-4 items-center justify-center w-screen bg-secondary-main-500">
-        <h1 className="text-2xl text-center">Leer lezen met GPT</h1>
+        <h1 className="text-2xl text-center">GewoonLezen</h1>
       </header>
       <div className="w-screen relative mb-24 text-black" ref={messagesContainerRef}>
         {messages.map((message, idx) => (

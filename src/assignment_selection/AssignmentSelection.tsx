@@ -70,7 +70,7 @@ function AssignmentSelection() {
       </div>
 
       <footer className="bg-surface-main-150 py-4 text-center">
-        TLE Team 7
+        GewoonLezen door <i>LanguageLeap</i>
       </footer>
     </div>
   );
