@@ -16,9 +16,9 @@ function Home() {
         <h1 className="text-3xl font-bold">Uitlegvideo</h1>
       </header>
         <div className= "videoDiv">
-        <iframe classnName= "video" width="840" height="472,5" src="https://www.youtube.com/embed/LmxtPAqbwsI" 
-        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
-        encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe className= "video" width="840" height="472,5" src="https://www.youtube.com/embed/LmxtPAqbwsI" 
+        title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; 
+        encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
         </div>
       <div className="homeNextStep">
           <button

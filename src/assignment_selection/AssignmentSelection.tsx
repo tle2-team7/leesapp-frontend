@@ -41,7 +41,7 @@ function AssignmentSelection() {
    * @param {string} word - The word to capitalize.
    * @returns {string} The word with the first letter capitalized.
    */
-  const capitalizeFirstLetter = (word) => {
+  const capitalizeFirstLetter = (word: string) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   };
 
